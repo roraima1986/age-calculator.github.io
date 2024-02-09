@@ -4,6 +4,42 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) {    
+    .form__container {
+        margin-bottom: 3rem;
+    }
 
+    .form__group {
+       flex-basis: calc(100% - 33%);
+    }
+
+    .form__button-container {
+        justify-content: center;
+        margin-bottom: 3rem;
+    }
+
+    .form__btn {
+        width: 70px;
+        height: 70px;        
+    }
+
+    .result__item {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .layout {
+        padding: 5rem 2rem;
+        border-radius: 2rem 2rem 10rem 2rem;
+    }
+
+    .form__label {        
+        font-size: 1.4rem;       
+    }
+    
+    .form__input {        
+        font-size: 2rem;       
+    }
+    
 }

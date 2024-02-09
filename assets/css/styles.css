@@ -9,17 +9,6 @@
     --color-red: hsl(0, 100%, 67%);
 }
 
-@font-face {
-    font-family: Poppins;
-    src: url(./assets/fonts/Poppins-Regular.ttf)  format("truetype");
-}
-
-@font-face {
-    font-family: Poppins;
-    src: url(./assets/fonts/Poppins-Bold.ttf) format("truetype");
-    font-weight: bold;
-}
-
 * {
     margin: 0;
     padding: 0;

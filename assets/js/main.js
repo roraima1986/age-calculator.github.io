@@ -29,10 +29,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
         
         // Variables para dia, mes y año actual
-        let  today = new Date()
-        const day = today.getDate()
-        const  month = today.getMonth() + 1
-        const year = today.getFullYear()
+        const birthday = new Date(inputYear.value, inputMonth.value - 1 , inputDay.value)
+        const today = new Date()        
+
+        let year = (today.getFullYear() - birthday.getFullYear())
+        let month = (today.getMonth() - birthday.getMonth()) 
+        let day = (today.getDate() - birthday.getDate())    
+
+        if (day < 0) {
+            let lastDayMonthPrevious = new Date(today.getFullYear(), today.getMonth() - 1, 0).getDate();
+            day += lastDayMonthPrevious;
+            month--
+        }
+
+        if (month < 0) {
+            month += 12
+            year--
+        }
+        
+        if (inputDay.value && inputMonth.value && inputYear.value) {
+            resultYears.innerHTML = `${year}`
+            resultMonths.innerHTML = `${month}`
+            resultDay.innerHTML =  `${day}`              
+        } else {
+            resultYears.innerHTML = `--`
+            resultMonths.innerHTML = `--`
+            resultDay.innerHTML =  `--`    
+        }
         
         
         // Funcion para mostrar estilos de error
@@ -83,26 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
             showStylesError(labelYear, inputYear, msgErrorYear, 'This field is required', resultYears)            
         } else if(inputYear.value < 0) {
             showStylesError(labelYear, inputYear, msgErrorYear, 'Year must be greater than 0', resultYears)
-        } else if (inputYear.value > year) {
+        } else if (inputYear.value > today.getFullYear()) {
             showStylesError(labelYear, inputYear, msgErrorYear, 'Must be in the past', resultYears)
         } else {
             hideStylesError(labelYear, inputYear, msgErrorYear)
-        }   
-        
-        // Calcular edad        
-        if (inputDay.value && inputMonth.value && inputYear.value) {
-            const yearCalculated = (year - inputYear.value)
-            const monthCalculated = (month - inputMonth.value)
-            const dayCalculated = (day - inputDay.value)
-            
-            resultYears.innerHTML = `${yearCalculated}`
-            resultMonths.innerHTML = `${monthCalculated}`
-            resultDay.innerHTML =  `${dayCalculated}`              
-        } else {
-            resultYears.innerHTML = `--`
-            resultMonths.innerHTML = `--`
-            resultDay.innerHTML =  `--`    
-        }
+        }          
         
     });
 })
